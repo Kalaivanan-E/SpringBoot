@@ -27,4 +27,10 @@ public class EmployeeServiceimpl implements EmployeeService {
         );
         return saveEmployee;
     }
+    public Employee getEmployee(Long id){
+            return repo.findById(id)
+                    .orElseThrow(()->new RuntimeException("Employee not found"));
+
+    }
+
  }
