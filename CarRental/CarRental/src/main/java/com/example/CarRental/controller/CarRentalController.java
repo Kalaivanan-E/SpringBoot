@@ -38,4 +38,11 @@ public class CarRentalController {
         return ResponseEntity.ok(updatedCar);
 
     }
+
+    @DeleteMapping("/{id}")
+
+    public ResponseEntity<String> deleteCar(@PathVariable Long id){
+            service.deleteCar(id);
+            return ResponseEntity.ok("Car is deleted successfully");
+    }
 }

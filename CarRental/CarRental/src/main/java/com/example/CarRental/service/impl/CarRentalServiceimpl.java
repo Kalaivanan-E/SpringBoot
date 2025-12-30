@@ -38,8 +38,9 @@ public class CarRentalServiceimpl implements CarRentalService {
         CarRental carRental = repo.findByid(id);
 
         carRental.setBrand(carRentaldto.getBrand());
-        carRental.setDailyRate(carRental.getDailyRate());
-        carRental.setModel(carRental.getModel());
+        carRental.setDailyRate(carRentaldto.getDailyRate());
+        carRental.setModel(carRentaldto.getModel());
+
 
         CarRental updatedcar = repo.save(carRental);
         return new CarRentalDto(
@@ -50,5 +51,10 @@ public class CarRentalServiceimpl implements CarRentalService {
                 updatedcar.isAvailable()
         );
     }
+    public void deleteCar(Long id){
+            CarRental car = repo.findByid(id);
+            repo.delete(car);
+    }
+
 
 }
