@@ -6,4 +6,6 @@ import com.example.Department.Details.entity.Department;
 public interface DepartmentService {
     DepartmentDTO createEmployee(DepartmentDTO departmentDTO);
     Department getEmployee(Long id);
+    DepartmentDTO updateEmployee(Long id, DepartmentDTO departmentDTO);
+    void deleteEmployee(Long id);
 }

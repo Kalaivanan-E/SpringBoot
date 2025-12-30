@@ -30,8 +30,26 @@ public class DepartmentServiceImpl implements DepartmentService {
       return saveDepartment;
     }
     public Department getEmployee(Long id){
-        return repository.findById(id)
-                .orElseThrow(()->new RuntimeException("employee not found "));
+        return repository.findByid(id);
+    }
+
+    public DepartmentDTO updateEmployee(Long id, DepartmentDTO departmentDTO){
+        Department department = repository.findByid(id);
+
+        department.setName(departmentDTO.getName());
+        department.setSalary(departmentDTO.getSalary());
+
+        Department updatedEmployee = repository.save(department);
+
+        return new DepartmentDTO(
+                updatedEmployee.getId(),
+                updatedEmployee.getName(),
+                updatedEmployee.getSalary()
+        );
+    }
+    public void deleteEmployee(Long id){
+        Department dept = repository.findByid(id);
+        repository.delete(dept);
     }
 
 

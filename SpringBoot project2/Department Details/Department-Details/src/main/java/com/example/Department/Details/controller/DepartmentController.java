@@ -27,4 +27,19 @@ public class DepartmentController {
         return new ResponseEntity<>(D,HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<DepartmentDTO> updateEmployee(
+            @PathVariable Long id,
+            @RequestBody DepartmentDTO departmentDTO
+    ){
+        DepartmentDTO D = service.updateEmployee(id,departmentDTO);
+        return  ResponseEntity.ok(D);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable Long id){
+            service.deleteEmployee(id);
+            return ResponseEntity.ok("Employee is deleted successfully");
+    }
+
 }
