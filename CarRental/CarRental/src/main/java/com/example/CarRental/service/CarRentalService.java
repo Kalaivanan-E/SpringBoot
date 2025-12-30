@@ -8,4 +8,5 @@ public interface CarRentalService {
 
     CarRentalDto createCar(CarRentalDto carRentaldto);
     CarRental getCar(Long id);
+    CarRentalDto updateCar(Long id, CarRentalDto carRentaldto);
 }

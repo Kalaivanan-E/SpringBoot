@@ -32,7 +32,23 @@ public class CarRentalServiceimpl implements CarRentalService {
         return savecar;
     }
     public CarRental getCar(Long id){
-        return repo.findById(id)
-                .orElseThrow(()->new RuntimeException("Car not found"));
+        return repo.findByid(id);
     }
+    public CarRentalDto updateCar(Long id, CarRentalDto carRentaldto){
+        CarRental carRental = repo.findByid(id);
+
+        carRental.setBrand(carRentaldto.getBrand());
+        carRental.setDailyRate(carRental.getDailyRate());
+        carRental.setModel(carRental.getModel());
+
+        CarRental updatedcar = repo.save(carRental);
+        return new CarRentalDto(
+                updatedcar.getId(),
+                updatedcar.getBrand(),
+                updatedcar.getModel(),
+                updatedcar.getDailyRate(),
+                updatedcar.isAvailable()
+        );
+    }
+
 }

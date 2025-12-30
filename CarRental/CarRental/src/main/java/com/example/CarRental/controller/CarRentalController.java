@@ -28,4 +28,14 @@ public class CarRentalController {
         CarRental car = service.getCar(id);
         return new ResponseEntity<>(car,HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+
+    public ResponseEntity<CarRentalDto> updateCar(
+            @PathVariable Long id,
+            @RequestBody CarRentalDto carRentaldto){
+        CarRentalDto updatedCar = service.updateCar(id,carRentaldto);
+        return ResponseEntity.ok(updatedCar);
+
+    }
 }

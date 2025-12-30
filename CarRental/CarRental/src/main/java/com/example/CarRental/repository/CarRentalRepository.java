@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CarRentalRepository extends JpaRepository<CarRental ,Long> {
 
-
+    CarRental findByid(Long id);
 }
