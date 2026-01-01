@@ -6,4 +6,5 @@ import com.example.Book_Library.entity.Book;
 public interface BookService {
     BookDto createBook(BookDto bookdto);
     Book getBook(Long id);
+    BookDto updateBook(Long id, BookDto bookDto);
 }

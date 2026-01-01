@@ -30,7 +30,22 @@ public class BookServiceimpl implements BookService {
         return savebook;
     }
     public Book getBook(Long id){
-        return repo.findById(id)
-                .orElseThrow(()->new RuntimeException("Book not found"));
+        return repo.findByid(id);
+    }
+    public BookDto updateBook(Long id, BookDto bookDto){
+        Book updatebook = repo.findByid(id);
+
+        updatebook.setTitle(bookDto.getTitle());
+        updatebook.setAuthor(bookDto.getAuthor());
+        updatebook.setPrice(bookDto.getPrice());
+
+        Book updatedbook = repo.save(updatebook);
+
+        return new BookDto(
+                updatedbook.getId(),
+                updatebook.getTitle(),
+                updatedbook.getAuthor(),
+                updatedbook.getPrice()
+        );
     }
 }
