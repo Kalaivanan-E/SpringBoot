@@ -7,4 +7,6 @@ public interface ProductService {
 
     ProductDto createProduct(ProductDto productdto);
     Product getProduct(Long id);
+    ProductDto updateProduct(Long id, ProductDto productDto);
+    void deleteProduct(Long id);
 }

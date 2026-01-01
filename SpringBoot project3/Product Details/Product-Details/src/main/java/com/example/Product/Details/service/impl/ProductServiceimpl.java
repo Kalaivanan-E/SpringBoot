@@ -31,7 +31,27 @@ public class ProductServiceimpl implements ProductService {
         return saveproduct;
     }
     public Product getProduct(Long id){
-        return respository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Product not found"));
+        return respository.findByid(id);
     }
+    public ProductDto updateProduct(Long id, ProductDto productDto){
+        Product updateproduct = respository.findByid(id);
+
+        updateproduct.setProductName(productDto.getProductName());
+        updateproduct.setPrice(productDto.getPrice());
+        updateproduct.setQuantity(productDto.getQuantity());
+
+        Product UpdatedProduct = respository.save(updateproduct);
+
+        return new ProductDto(
+                updateproduct.getId(),
+                updateproduct.getProductName(),
+                updateproduct.getPrice(),
+                updateproduct.getQuantity()
+        );
+    }
+    public void deleteProduct(Long id){
+        Product product = respository.findByid(id);
+        respository.delete(product);
+    }
+
 }
