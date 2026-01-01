@@ -48,4 +48,8 @@ public class BookServiceimpl implements BookService {
                 updatedbook.getPrice()
         );
     }
+    public void deleteBook(Long id){
+        Book deletebook = repo.findByid(id);
+        repo.delete(deletebook);
+    }
 }
