@@ -7,4 +7,5 @@ public interface BankService {
     BankDTO createAccount(BankDTO bankdto);
     BankEntity getAccount(Long accountId);
     BankDTO updateAccount(Long accountId, BankDTO bankdto);
+    void deleteAccount(Long accountId);
 }

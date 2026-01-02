@@ -32,4 +32,25 @@ public class BankServiceimpl implements BankService {
     public BankEntity getAccount(Long accountId){
         return repo.findByaccountId(accountId);
     }
+
+    public BankDTO updateAccount(Long accountId, BankDTO bankdto){
+        BankEntity bankaccount = repo.findByaccountId(accountId);
+
+        bankaccount.setName(bankdto.getName());
+        bankaccount.setAccountType(bankdto.getAccountType());
+        bankaccount.setBalance(bankdto.getBalance());
+
+        BankEntity savedaccount = repo.save(bankaccount);
+
+        return new BankDTO(
+                savedaccount.getAccountId(),
+                savedaccount.getName(),
+                savedaccount.getAccountType(),
+                savedaccount.getBalance()
+        );
+    }
+    public void deleteAccount(Long accountId){
+        BankEntity deleteaccount = repo.findByaccountId(accountId);
+        repo.delete(deleteaccount);
+    }
 }
