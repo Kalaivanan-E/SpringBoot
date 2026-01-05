@@ -8,4 +8,5 @@ public interface CourierService {
     CourierDTO createCourier(CourierDTO courierdto);
     CourierEntity getCourier(Long courierId);
     CourierDTO updateCourier(Long courierId, CourierDTO courierdto);
+    void deleteCourier(Long courierId);
 }

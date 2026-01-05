@@ -50,4 +50,9 @@ public class CourierServiceimpl implements CourierService {
         );
         return savem2;
     }
+    public void deleteCourier(Long courierId){
+        CourierEntity deletecourier = repo.findBycourierId(courierId);
+        repo.delete(deletecourier);
+    }
+
 }

@@ -34,4 +34,11 @@ public class CourierController {
         CourierDTO updatecourier = service.updateCourier(courierId,courierdto);
         return ResponseEntity.ok(updatecourier);
     }
+
+    @DeleteMapping("/{courierId}")
+
+    public ResponseEntity<String> deleteCourier(@PathVariable Long courierId){
+        service.deleteCourier(courierId);
+        return ResponseEntity.ok("Courier is deleted successfully");
+    }
 }
