@@ -33,4 +33,21 @@ public class CourierServiceimpl implements CourierService {
     public CourierEntity getCourier(Long courierId){
         return repo.findBycourierId(courierId);
     }
+    public CourierDTO updateCourier(Long courierId, CourierDTO courierdto){
+        CourierEntity m2 = repo.findBycourierId(courierId);
+
+        m2.setTrackingId(courierdto.getTrackingId());
+        m2.setSenderName(courierdto.getSenderName());
+        m2.setReceiverName(courierdto.getReceiverName());
+
+        CourierEntity savedm2 = repo.save(m2);
+
+        CourierDTO savem2 = new CourierDTO(
+                savedm2.getCourierId(),
+                savedm2.getTrackingId(),
+                savedm2.getSenderName(),
+                savedm2.getReceiverName()
+        );
+        return savem2;
+    }
 }

@@ -27,4 +27,11 @@ public class CourierController {
         CourierEntity getcourier = service.getCourier(courierId);
         return new ResponseEntity<>(getcourier,HttpStatus.OK);
     }
+
+    @PutMapping("/{courierId}")
+
+    public ResponseEntity<CourierDTO> updateCourier(@PathVariable Long courierId, @RequestBody CourierDTO courierdto){
+        CourierDTO updatecourier = service.updateCourier(courierId,courierdto);
+        return ResponseEntity.ok(updatecourier);
+    }
 }
