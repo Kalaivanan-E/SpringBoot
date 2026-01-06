@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 public class MovieDTO {
     private Long id;
     private String movieName;
+    private int seatCount;
     private String theatreName;
-    private Long seatcount;
-    private Long price;
+
+    private double price;
 }
